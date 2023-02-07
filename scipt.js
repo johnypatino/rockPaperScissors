@@ -35,4 +35,33 @@ function playGame(playerSelection, computerSelection) {
         return "Invalid, Try again!"
     }
 }
-console.log(playGame("rock", getComputerChoice()));
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let winner;
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Rock, Paper, or Scissors?");
+        let message = playGame(playerSelection, getComputerChoice());
+        console.log(message);
+        if (message.slice(0 , 7) == "You Win") {
+            playerScore++;
+        }
+        else if (message.slice(0 , 8) == "You Lose") {
+            computerScore++;
+        }
+    }
+    if (playerScore > computerScore) {
+        winner = "You!"
+    }
+    else if (playerScore < computerScore)
+    {
+        winner = "Computer!"
+    }
+    else {
+        winner = "No Winner, Tie!"
+    }
+    console.log(`Your score: ${playerScore} \nComputer Score: ${computerScore} \nWinner: ${winner}`);
+
+}
+game();
